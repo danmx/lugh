@@ -1,0 +1,18 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+generatorOptions:
+  disableNameSuffixHash: true
+
+namespace: dapr-system
+
+helmCharts:
+  - releaseName: dapr
+    includeCRDs: true
+    valuesFile: dapr-values.yaml
+    name: dapr
+    version: 1.10.2
+    repo: https://dapr.github.io/helm-charts/
+    namespace: dapr-system
+
